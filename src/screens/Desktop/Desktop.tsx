@@ -175,15 +175,13 @@ export const Desktop = (): JSX.Element => {
   return (
     <div className='bg-white min-h-screen w-full'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        {/* Hero Section */}
-        <section className='w-full mb-8 sm:mb-12 lg:mb-16'>
+        
+        <section className='w-full mb-8 sm:mb-12 lg:mb-16 mt-12'>
           <div className='relative w-full h-[400px] sm:h-[500px] lg:h-[604px] bg-[#379286] rounded-2xl sm:rounded-3xl overflow-hidden'>
-            <div className='flex flex-col justify-between h-full p-4 sm:p-6 lg:p-8'>
-              {/* Header */}
+            <div className='flex flex-col justify-between h-full p-4 sm:p-6 lg:p-8 '>
 
-              {/* Hero Content */}
               <div className='flex-1 flex flex-col justify-center px-2 sm:px-4 lg:px-8'>
-                <h1 className='text-white font-semibold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-tight mb-4 sm:mb-6 lg:mb-8'>
+                <h1 className='text-white font-semibold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-tight mb-4 sm:mb-6 lg:mb-8 text-center'>
                   Qanday qilib ajrashish yoqasiga {''}
                   <br className='hidden sm:block' />
                   kelib qolgan munosabatlaringizni {''}
