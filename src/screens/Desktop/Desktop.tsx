@@ -191,9 +191,7 @@ export const Desktop = (): JSX.Element => {
                   qutqarib qolishingiz mumkin?
                 </h1>
 
-                <p className='text-white font-medium text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed'>
-                  Ha, agar siz muammoning ildizini aniqlab, to'g'ri muloqot va aniq reja bilan harakat qilsangiz.
-                </p>
+              
               </div>
             </div>
           </div>
