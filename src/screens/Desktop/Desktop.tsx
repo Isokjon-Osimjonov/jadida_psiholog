@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { FaCheckCircle, FaShieldAlt, FaComments } from "react-icons/fa";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
@@ -81,6 +82,63 @@ const guaranteeItems = [
 ];
 
 export const Desktop = (): JSX.Element => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.phone.trim()) {
+      setSubmitMessage('Iltimos, barcha maydonlarni to\'ldiring');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      // Replace this URL with your Pabbly Connect webhook URL
+      const webhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZkMDYzNDA0MzE1MjZkNTUzMzUxMzci_pc';
+      
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          timestamp: new Date().toISOString(),
+          source: 'Jadida Xusniddinovna Landing Page'
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitMessage('Muvaffaqiyatli yuborildi! Tez orada siz bilan bog\'lanamiz.');
+        setFormData({ name: '', phone: '' });
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitMessage('Xatolik yuz berdi. Iltimos, qayta urinib ko\'ring.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="bg-white min-h-screen w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -381,14 +439,18 @@ export const Desktop = (): JSX.Element => {
 
               <div className="w-full max-w-md mx-auto lg:mx-0">
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20">
-                  <div className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <Label className="text-white text-base font-light mb-2 block">
                         Ismingiz
                       </Label>
                       <Input
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         className="w-full h-12 sm:h-14 rounded-2xl border-none bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:ring-2 focus:ring-white/30"
                         placeholder="Ismingizni yozing"
+                        required
                       />
                     </div>
 
@@ -397,15 +459,33 @@ export const Desktop = (): JSX.Element => {
                         Telefon raqamingiz
                       </Label>
                       <Input
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
                         className="w-full h-12 sm:h-14 rounded-2xl border-none bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:ring-2 focus:ring-white/30"
                         placeholder="+998 90 123 45 67"
+                        required
                       />
                     </div>
 
-                    <Button className="w-full h-12 sm:h-14 bg-[#369186] hover:bg-[#369186]/90 rounded-2xl text-white font-semibold text-lg sm:text-xl">
-                      Jo'natish
+                    <Button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full h-12 sm:h-14 bg-[#369186] hover:bg-[#369186]/90 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl text-white font-semibold text-lg sm:text-xl"
+                    >
+                      {isSubmitting ? 'Yuborilmoqda...' : 'Jo\'natish'}
                     </Button>
-                  </div>
+
+                    {submitMessage && (
+                      <div className={`text-center p-3 rounded-lg ${
+                        submitMessage.includes('Muvaffaqiyatli') 
+                          ? 'bg-green-500/20 text-green-100' 
+                          : 'bg-red-500/20 text-red-100'
+                      }`}>
+                        {submitMessage}
+                      </div>
+                    )}
+                  </form>
                 </div>
               </div>
             </div>
