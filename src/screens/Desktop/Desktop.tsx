@@ -181,7 +181,7 @@ export const Desktop = (): JSX.Element => {
             <div className='flex flex-col justify-between h-full p-4 sm:p-6 lg:p-8 '>
 
               <div className='flex-1 flex flex-col justify-center px-2 sm:px-4 lg:px-8'>
-                <h1 className='text-white font-medium text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-tight mb-4 sm:mb-6 lg:mb-8 text-center'>
+                <h1 className='text-white font-medium text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-7 mb-4 sm:mb-6 lg:mb-8 text-center '>
                   Qanday qilib ajrashish yoqasiga {''}
                   <br className='hidden sm:block' />
                   kelib qolgan munosabatlaringizni {''}
