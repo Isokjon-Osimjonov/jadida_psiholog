@@ -21,7 +21,7 @@ const problemCards = [
   },
   {
     number: '4',
-    text: 'Munosabatdagi iliqlik va yaqinlik kamaygan.',
+    text: 'Jinsiy yaqinlik kamayib ketdi.\nErim meni xohlashdan to‘xtadi shekilli.',
   },
 ];
 
