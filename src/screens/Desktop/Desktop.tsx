@@ -177,7 +177,7 @@ export const Desktop = (): JSX.Element => {
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         
         <section className='w-full mb-8 sm:mb-12 lg:mb-16 mt-4'>
-          <div className='relative w-full h-[400px] sm:h-[500px] lg:h-[604px] bg-[#379286] rounded-2xl sm:rounded-3xl overflow-hidden'>
+          <div className='relative w-full h-[300px] sm:h-[300px] lg:h-[604px] bg-[#379286] rounded-2xl sm:rounded-3xl overflow-hidden'>
             <div className='flex flex-col justify-between h-full p-4 sm:p-6 lg:p-8 '>
 
               <div className='flex-1 flex flex-col justify-center px-2 sm:px-4 lg:px-8'>
