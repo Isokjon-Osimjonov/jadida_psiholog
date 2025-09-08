@@ -184,7 +184,7 @@ export const Desktop = (): JSX.Element => {
               {/* Hero Content */}
               <div className='flex-1 flex flex-col justify-center px-2 sm:px-4 lg:px-8'>
                 <h1 className='text-white font-semibold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-tight mb-4 sm:mb-6 lg:mb-8'>
-                  Qanday qilib ajrashish yoqasiga
+                  Qanday qilib ajrashish yoqasiga {''}
                   <br className='hidden sm:block' />
                   kelib qolgan munosabatlaringizni {''}
                   <br className='hidden sm:block' />
