@@ -84,23 +84,60 @@ const guaranteeItems = [
 export const Desktop = (): JSX.Element => {
   const [formData, setFormData] = useState({
     name: '',
-    phone: ''
+    phone: '+998 '
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    if (name === 'phone') {
+      // Ensure +998 prefix is always present
+      if (!value.startsWith('+998 ')) {
+        return; // Don't allow changes that remove the prefix
+      }
+      // Only allow numbers and spaces after +998
+      const phoneNumber = value.slice(5); // Remove '+998 ' prefix
+      const cleanNumber = phoneNumber.replace(/[^\d\s]/g, '');
+      const formattedValue = '+998 ' + cleanNumber;
+      
+      setFormData(prev => ({
+        ...prev,
+        [name]: formattedValue
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
+  };
+
+  const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const input = e.target as HTMLInputElement;
+    const cursorPosition = input.selectionStart || 0;
+    
+    // Prevent deletion of +998 prefix
+    if ((e.key === 'Backspace' || e.key === 'Delete') && cursorPosition <= 5) {
+      e.preventDefault();
+    }
+  };
+
+  const handlePhoneFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    const input = e.target;
+    // Set cursor position after +998 prefix
+    setTimeout(() => {
+      if (input.value === '+998 ') {
+        input.setSelectionRange(5, 5);
+      }
+    }, 0);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name.trim() || !formData.phone.trim()) {
+    if (!formData.name.trim() || formData.phone.trim() === '+998') {
       setSubmitMessage('Iltimos, barcha maydonlarni to\'ldiring');
       return;
     }
@@ -127,7 +164,7 @@ export const Desktop = (): JSX.Element => {
 
       if (response.ok) {
         setSubmitMessage('Muvaffaqiyatli yuborildi! Tez orada siz bilan bog\'lanamiz.');
-        setFormData({ name: '', phone: '' });
+        setFormData({ name: '', phone: '+998 ' });
       } else {
         throw new Error('Network response was not ok');
       }
@@ -462,8 +499,10 @@ export const Desktop = (): JSX.Element => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
+                       onKeyDown={handlePhoneKeyDown}
+                       onFocus={handlePhoneFocus}
                         className="w-full h-12 sm:h-14 rounded-2xl border-none bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:ring-2 focus:ring-white/30"
-                        placeholder="+998 90 123 45 67"
+                       placeholder="+998 90 900 90 90"
                         required
                       />
                     </div>
