@@ -181,7 +181,7 @@ export const Desktop = (): JSX.Element => {
             <div className='flex flex-col justify-between h-full p-4 sm:p-6 lg:p-8 '>
 
               <div className='flex-1 flex flex-col justify-center px-2 sm:px-4 lg:px-8'>
-                <h1 className='text-white font-semibold text-3xl sm:text-4xl lg:text-4xl xl:text-5xl leading-tight mb-4 sm:mb-6 lg:mb-8 text-center'>
+                <h1 className='text-white font-semibold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-tight mb-4 sm:mb-6 lg:mb-8 text-center'>
                   Qanday qilib ajrashish yoqasiga {''}
                   <br className='hidden sm:block' />
                   kelib qolgan munosabatlaringizni {''}
@@ -429,7 +429,7 @@ export const Desktop = (): JSX.Element => {
                         name='name'
                         value={formData.name}
                         onChange={handleInputChange}
-                        className='w-full h-12 sm:h-14 rounded-2xl border-none bg-white/10 backdrop-blur-sm text-white placeholder-white focus:ring-2 focus:ring-white/30'
+                        className='w-full h-12 sm:h-14 rounded-2xl border-none bg-white/10 backdrop-blur-sm text-white placeholder-rose focus:ring-2 focus:ring-white/30'
                         placeholder='Ismingizni yozing'
                         required
                       />
