@@ -444,7 +444,7 @@ export const Desktop = (): JSX.Element => {
                         onChange={handleInputChange}
                         onKeyDown={handlePhoneKeyDown}
                         onFocus={handlePhoneFocus}
-                        className='w-full h-12 sm:h-14 rounded-2xl border-none bg-white/10 backdrop-blur-sm text-white placeholder-white focus:ring-2 focus:ring-white/30'
+                        className='w-full h-12 sm:h-14 rounded-2xl border-none bg-white/10 backdrop-blur-sm text-white !placeholder-white/60 focus:ring-2 focus:ring-white/30'
                         placeholder='+998 90 900 90 90'
                         required
                       />
