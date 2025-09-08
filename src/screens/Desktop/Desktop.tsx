@@ -453,7 +453,7 @@ export const Desktop = (): JSX.Element => {
                     <Button
                       type='submit'
                       disabled={isSubmitting}
-                      className='w-full h-12 sm:h-14 bg-[#25C3B0] hover:bg-[#369186]/90 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl text-white font-semibold text-lg sm:text-xl'
+                      className='w-full h-12 sm:h-14 bg-[#25C3B0] hover:bg-[#25C3B0]/90 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl text-white font-semibold text-lg sm:text-xl'
                     >
                       {isSubmitting ? 'Yuborilmoqda...' : "Jo'natish"}
                     </Button>
