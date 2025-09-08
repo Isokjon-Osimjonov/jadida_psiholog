@@ -429,7 +429,7 @@ export const Desktop = (): JSX.Element => {
                         name='name'
                         value={formData.name}
                         onChange={handleInputChange}
-                        className='w-full h-12 sm:h-14 rounded-2xl border-none bg-white/10 backdrop-blur-sm text-white placeholder-white focus:ring-2 focus:ring-white/30'
+                        className='w-full h-12 sm:h-14 rounded-2xl border-none bg-white/10 backdrop-blur-sm text-white !placeholder-white focus:ring-2 focus:ring-white/30'
                         placeholder='Ismingizni yozing'
                         required
                         
