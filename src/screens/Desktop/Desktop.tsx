@@ -110,7 +110,7 @@ export const Desktop = (): JSX.Element => {
 
     try {
       // Replace this URL with your Pabbly Connect webhook URL
-      const webhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZkMDYzNDA0MzE1MjZkNTUzMzUxMzci_pc';
+      const webhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTY1MDYzNTA0MzU1MjY1NTUzZDUxMzYi_pc';
       
       const response = await fetch(webhookUrl, {
         method: 'POST',
