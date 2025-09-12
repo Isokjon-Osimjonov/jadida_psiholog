@@ -56,7 +56,7 @@ export const ThankYou: React.FC = () => {
             <div className='bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 mb-8 sm:mb-10 border border-white/10'>
               <p className='text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed'>
                 <span className='font-semibold'>Eslatma:</span> Agar 24 soat ichida javob olmagan bo'lsangiz, 
-                iltimos spam papkangizni tekshiring yoki to'g\'ridan-to'g\'ri bizga qo'ng\'iroq qiling.
+                iltimos spam papkangizni tekshiring yoki to'g\'ridan-to\'g\'ri bizga qo\'ng\'iroq qiling.
               </p>
             </div>
 
