@@ -1,13 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { FaCheckCircle, FaHeart } from 'react-icons/fa';
 
-interface ThankYouProps {
-  onReturnHome: () => void;
-}
+export const ThankYou: React.FC = () => {
+  const navigate = useNavigate();
 
-export const ThankYou: React.FC<ThankYouProps> = ({ onReturnHome }) => {
+  const handleReturnHome = () => {
+    navigate('/');
+    // Scroll to top after navigation
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <div className='bg-white min-h-screen w-full flex items-center justify-center px-4'>
       <div className='max-w-2xl mx-auto w-full'>
@@ -55,7 +62,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ onReturnHome }) => {
 
             {/* Return Button */}
             <Button
-              onClick={onReturnHome}
+              onClick={handleReturnHome}
               className='w-full sm:w-auto min-w-[200px] h-12 sm:h-14 lg:h-16 bg-white hover:bg-white/90 text-[#379286] font-bold text-lg sm:text-xl lg:text-2xl rounded-2xl px-8 sm:px-12 transition-all duration-300 hover:scale-105'
             >
               Bosh sahifaga qaytish

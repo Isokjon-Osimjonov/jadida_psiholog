@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaCheckCircle, FaShieldAlt, FaComments } from 'react-icons/fa';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
 import { Input } from '../../components/ui/input';
 import { Label } from '../../components/ui/label';
-import { ThankYou } from '../../components/ThankYou';
 
 const problemCards = [
   {
@@ -78,13 +78,13 @@ const guaranteeItems = [
 ];
 
 export const Desktop = (): JSX.Element => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     phone: '+998 ',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
-  const [showThankYou, setShowThankYou] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -161,7 +161,7 @@ export const Desktop = (): JSX.Element => {
       });
 
       if (response.ok) {
-        setShowThankYou(true);
+        navigate('/rahmat');
         setFormData({ name: '', phone: '+998 ' });
       } else {
         throw new Error('Network response was not ok');
@@ -173,17 +173,6 @@ export const Desktop = (): JSX.Element => {
       setIsSubmitting(false);
     }
   };
-
-  const handleReturnHome = () => {
-    setShowThankYou(false);
-    setSubmitMessage('');
-    // Scroll to top of page
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  if (showThankYou) {
-    return <ThankYou onReturnHome={handleReturnHome} />;
-  }
 
   return (
     <div className='bg-white min-h-screen w-full'>
