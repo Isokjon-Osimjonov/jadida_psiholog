@@ -47,8 +47,7 @@ export const ThankYou: React.FC = () => {
                 Sizning ma'lumotlaringiz muvaffaqiyatli qabul qilindi. 
                 <br className='hidden sm:block' />
                 Tez orada mutaxassis siz bilan bog'lanadi va 
-                <br className='hidden sm:block' />
-                bepul konsultatsiya vaqtini belgilaydi.
+                <br className='hidden sm:block' /> konsultatsiya vaqtini belgilaydi.
               </p>
             </div>
 
