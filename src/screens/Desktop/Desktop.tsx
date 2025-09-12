@@ -5,6 +5,7 @@ import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
 import { Input } from '../../components/ui/input';
 import { Label } from '../../components/ui/label';
+import { ThankYou } from '../../components/ThankYou';
 
 const problemCards = [
   {
@@ -83,6 +84,7 @@ export const Desktop = (): JSX.Element => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -159,7 +161,7 @@ export const Desktop = (): JSX.Element => {
       });
 
       if (response.ok) {
-        setSubmitMessage("Muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.");
+        setShowThankYou(true);
         setFormData({ name: '', phone: '+998 ' });
       } else {
         throw new Error('Network response was not ok');
@@ -171,6 +173,17 @@ export const Desktop = (): JSX.Element => {
       setIsSubmitting(false);
     }
   };
+
+  const handleReturnHome = () => {
+    setShowThankYou(false);
+    setSubmitMessage('');
+    // Scroll to top of page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  if (showThankYou) {
+    return <ThankYou onReturnHome={handleReturnHome} />;
+  }
 
   return (
     <div className='bg-white min-h-screen w-full'>
